@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:18.1
+    container_name: db
+    restart: always
+    ports:
+      - "5022:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - /data/transfer/postgres:/var/lib/postgresql
+
+  server:
+    build: ./WebApiTransfer
+    container_name: transfer_api
+    volumes:
+      - /data/transfer/images:/app/images
+    ports:
+      - "5898:8080"
+    depends_on:
+      - db
+
+  front:
+    build: 
+      context: ./my-transfer
+    container_name: react_front
+    depends_on:
+      - server
+    ports:
+      - "3987:80"

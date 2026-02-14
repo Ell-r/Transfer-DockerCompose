@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --body_background: #eff8f6;
+    --body_color: #000000;
+
+    --header_background: rgb(172, 223, 217);
+    --header_color: white;
+
+    --panel_background: rgb(180, 232, 226);
+    --panel_color: white;
+
+    --body_background_components: white;
+    --body_color_components: black;
+}
+
+.dark {
+    --body_background: #1a202c;
+    --body_color: #b8ccdc;
+
+    --header_background:#2d3748;
+    --header_color:#b8ccdc;
+
+    --panel_background: #202735;
+    --panel_color: #b8ccdc;
+
+    --body_background_components: #202735;
+    --body_color_components:#b8ccdc;
+}
